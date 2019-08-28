@@ -18,7 +18,6 @@
           <img class="card-img-top img-fluid" src="<?= base_url('assets/img/barang/'.$barang['foto_barang']) ?>" alt="">
           <div class="card-body">
             <h3 class="card-title"><?= $barang['nama_barang'] ?></h3>
-            <h4>Rp.<?= number_format($barang['harga_barang'],0); ?></h4>
             <!-- RATING -->
             <span class="text-warning">
               <?php for ($i=0; $i < 5; $i++) : ?>
@@ -29,14 +28,19 @@
                 <?php endif; ?>
               <?php endfor; ?>
             </span>
-
-            <p class="card-text mt-4"><?= $barang['desc_barang'] ?></p>
+            <p><?= $barang['rating_barang'] ?> Transaksi sukses</p>
+            <h4 class="mb-4">Rp.<?= number_format($barang['harga_barang'],0); ?></h4>
+            <p class="card-text mt-5"><?= $barang['desc_barang'] ?></p>
+            <!-- Button -->
             <div class="row">
-              <div class="col-4">
-                <a href="#" class="btn btn-outline-success w-100">Buy</a>
+              <div class="col-md-2 pt-2">
+                <a href="<?= base_url('user/chat/'.$barang['nama_barang']) ?>"  class="btn btn-secondary w-100">Chat</a>
               </div>
-              <div class="col-8">
-                <a href="#" class="btn btn-success w-100">Add to cart</a>
+              <div class="col-md-6 pt-2">
+                <a href="<?= base_url('user/index') ?>" class="btn btn-success w-100">Add to cart</a>
+              </div>
+              <div class="col-md-4 py-2">
+                <a href="<?= base_url('user/index') ?>" class="btn btn-outline-success w-100">Buy</a>
               </div>
             </div>
           </div>

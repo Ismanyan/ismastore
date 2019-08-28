@@ -5,7 +5,13 @@ class Home extends CI_Controller {
 
     function __construct(){
 		parent::__construct();		
-		$this->load->model('home_models');
+        $this->load->model('home_models');
+        
+        // Check if already logged
+        if ($this->session->userdata('logged_in'))
+        { 
+            redirect(base_url('user'));
+        }
 	}
 
     // Home Page
