@@ -36,8 +36,11 @@
               <div class="col-md-2 pt-2">
                 <a href="<?= base_url('user/chat/'.$barang['nama_barang']) ?>"  class="btn btn-secondary w-100">Chat</a>
               </div>
-              <div class="col-md-6 pt-2">
-                <a href="<?= base_url('user/index') ?>" class="btn btn-success w-100">Add to cart</a>
+              <div class="col-md-2 pt-2">
+                <a href="<?= base_url('user/addwishlist/'.$barang['nama_barang'].'/'.$barang['id']) ?>"  class="btn btn-secondary w-100">Wishlist</a>
+              </div>
+              <div class="col-md-4 pt-2">
+                <a href="<?= base_url('user/addcart/'.$barang['nama_barang'].'/'.$barang['id']) ?>" class="btn btn-success w-100">Add to cart</a>
               </div>
               <div class="col-md-4 py-2">
                 <a href="<?= base_url('user/index') ?>" class="btn btn-outline-success w-100">Buy</a>

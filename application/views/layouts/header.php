@@ -51,9 +51,11 @@
               <?= $user_info['nama'] ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="<?= base_url('user/profile') ?>">Profile</a>
+              <a class="dropdown-item" href="<?= base_url('user/wishlist') ?>">Wishlist</a>
+              <a class="dropdown-item" href="<?= base_url('user/cart') ?>">My Cart</a>
               <?php if($this->session->userdata('role') !== NULL && $this->session->userdata('role') == 1) : ?>
-              <a class="dropdown-item" href="user/manage">Kelola Toko</a>
+              <a class="dropdown-item" href="<?= base_url('user/manage') ?>">Kelola Toko</a>
               <?php endif; ?>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Logout</a>
