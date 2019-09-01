@@ -19,23 +19,23 @@
 </head>
 
 <body>
-
-    <center>
-    <img src="<?= base_url('assets/img/logo/favicon.png') ?>" width="150">
-    </center>
-    
-    <div class="row">
-        <div class="col-md-4 mx-auto mt-3">
-            <form>
+    <div class="row pl-4 w-100">
+        <div class="col-md-4 mx-auto">
+            <center>
+            <a href="<?= base_url() ?>">
+                <img src="<?= base_url('assets/img/logo/favicon.png') ?>" width="150" class="mb-5">
+            </a>
+            <form action="<?= base_url('auth/login') ?>" method="post">
                 <div class="form-group">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" class="form-control" placeholder="Email" name="email" required >
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" name="pass" required>
                 </div>
                 <button type="submit" class="btn btn-success w-100">Login</button>
             </form>
             <p class="mt-3">Belum punya akun ? <a href="<?= base_url('home/daftar') ?>">Daftar Disini</a></p>
+            </center>
         </div>
     </div>
   <!-- Bootstrap core JavaScript -->

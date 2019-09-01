@@ -46,10 +46,10 @@
           <?php foreach($barang as $key) : ?>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="<?= base_url('views/index/'.$key['id']) ?>"><img class="card-img-top" src="<?= base_url('assets/img/barang/'.$key['foto_barang']); ?>" alt="" style="max-height:250px;"></a>
+              <a href="<?= base_url('views/produk/'.$key['id']) ?>"><img class="card-img-top" src="<?= base_url('assets/img/barang/'.$key['foto_barang']); ?>" alt="" style="max-height:250px;"></a>
               <div class="card-body">
                 <h4 class="card-title" style="white-space: nowrap; width: 100%;overflow: hidden; text-overflow: ellipsis;">
-                  <a href="<?= base_url('views/index/'.$key['id']) ?>" style="text-decoration:none; color:#28a745;"><?= $key['nama_barang'] ?></a>
+                  <a href="<?= base_url('views/produk/'.$key['id']) ?>" style="text-decoration:none; color:#28a745;"><?= $key['nama_barang'] ?></a>
                 </h4>
                 <!-- Heading -->
                 <h5 class="mt-2">Rp.<?= number_format($key['harga_barang'],0); ?></h5>
