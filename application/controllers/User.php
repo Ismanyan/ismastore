@@ -42,6 +42,8 @@ class User extends CI_Controller {
         $data['title'] = "Manage | Ismastore";
         $data['user_info'] = $this->user_models->getUserInfo($this->session->userdata('id_user'));
         $data['barang'] = $this->user_models->getBarang();
+        $data['kategori'] = $this->user_models->getKategori();
+
         // Load Views
         $this->load->view('layouts/header.php',$data);
         $this->load->view('manage/index.php',$data);
@@ -113,6 +115,7 @@ class User extends CI_Controller {
         $this->load->view('layouts/footer.php');
     }
 
+    // add Cart
     public function addcart($barang,$id)
     {
         $this->user_models->addcart($barang,$id);
@@ -121,4 +124,22 @@ class User extends CI_Controller {
                 document.location.href='".base_url('views/produk/'.$id)."';
             </script>";
     }
+
+    // INsert barang into database
+    public function addBarang()
+    {
+        if ($this->session->userdata('role_id') != null || $this->input->post() == null) {
+            redirect(base_url());
+            exit;
+        }
+
+        $input['nama_barang'] = $this->input->post('nama_barang',true);
+        $input['kategori_barang'] = $this->input->post('kategori_barang',true);
+        $input['harga_barang'] = $this->input->post('harga_barang',true);
+        $input['desc_barang'] = $this->input->post('desc_barang',true);
+        $input['kategori_barang'] = $this->input->post('kategori_barang',true);
+
+        $this->user_models->addBarang($input);
+    }
+
 }

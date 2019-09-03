@@ -7,7 +7,7 @@
         <div class="list-group">
           <div class="list-group-item mt-5"><h3>Kategori</h3></div>
           <?php foreach($kategori as $key) : ?>
-           <a href="<?= base_url('kategori/'.$key['nama']) ?>" class="list-group-item"><?= $key['nama'] ?></a>
+           <a href="<?= base_url('search/kategori/'.$key['id']) ?>" class="list-group-item"><?= $key['nama'] ?></a>
           <?php endforeach; ?>
         </div>
       </div>

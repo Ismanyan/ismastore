@@ -39,6 +39,25 @@ class user_models extends CI_Model {
         $this->db->insert('wishlist', $query);
     }
 
+    // add Barang
+    function addBarang($input)
+    {
+        $query = array( 
+        'id'	=>  NULL,
+        'kategori_barang' =>  $input['kategori_barang'], 
+        'nama_barang' =>  $input['nama_barang'], 
+        'desc_barang' => $input['harga_barang'],
+        'foto_barang'	=>  '-',
+        'harga_barang'	=>  $input['harga_barang'],
+        'rating_barang'	=>  NULL,
+        'jumlah_beli'	=>  NULL,
+        'created-at'	=>  NULL,
+        'id_toko'	=>  NULL,
+        'nama_toko'	=>  NULL 
+    );
+        $this->db->insert('barang', $query);
+    }
+
     // Get Wishlist
     function getWishlist($id)
     {
