@@ -46,7 +46,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="<?= base_url('user/addBarang') ?>" method="post">
+      <form action="<?= base_url('user/addBarang') ?>" method="post" enctype="multipart/form-data">
         <div class="modal-body">
             <div class="input-group mb-2">
                 <label class="input-group-btn">

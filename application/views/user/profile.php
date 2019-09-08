@@ -2,16 +2,79 @@
   <div class="container">
 
     <div class="row justify-content-md-center mt-5">
-      <div class="col-lg-5">
+      <div class="col-lg-5 mx-auto">
         <div class="card p-5">
-        <center>
-            <img src="<?= base_url('assets/img/user/'.'profile.png') ?>" alt="" class="w-50 mb-3">
-            <h3><?= $user_info['nama'] ?></h3>
-            <hr>
-            <p><?= $user_info['email'] ?></p>
-            <p><?= $user_info['phone'] ?></p>
-            
-        </center>
+          <center>
+          <img src="<?= base_url('assets/img/user/'.'profile.png') ?>" alt="" class="w-50 mb-3">
+          <h3><?= $user_info['nama'] ?></h3>
+          <hr>
+          <p><?= $user_info['email'] ?></p>
+          <p><?= $user_info['phone'] ?></p>
+          <?php if($address->num_rows() === 0) : ?>
+          <div class="alert alert-warning" role="alert">
+            Anda belum menambahkan alamat penerimaan barang. <a href="#" class="alert-link" data-toggle="modal" data-target="#checkout">Klik disini</a> untuk menambah alamat
+          </div>
+          </center>
+          <!-- Add Modal -->
+          <div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="checkoutLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="checkoutLabel">Tambah Alamat</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form method="post" action="<?= base_url('user/addAlamat') ?>">
+                  <div class="modal-body">
+                    <!-- accepter -->
+                    <div class="form-group">
+                      <label for="accepter">Nama Penerima</label>
+                      <input type="text" class="form-control" id="accepter" name="acepter">
+                    </div>
+                    <!-- Provinsi -->
+                    <div class="form-group">
+                      <label for="provinsi">Provinsi</label>
+                      <select class="form-control" id="provinsi" name="provinsi">
+                        <?php foreach($getProv as $key) : ?>
+                        <option value="<?= $key['id_provinsi'] ?>"><?= $key['nama_provinsi'] ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+                    <!-- Kota -->
+                    <div class="form-group">
+                      <label for="kota">Kota</label>
+                      <select class="form-control" id="kota" name="kota">
+                        <?php foreach($getKota as $key) : ?>
+                        <option value="<?= $key['id_kota'] ?>"><?= $key['nama_kota'] ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+                    <!-- Zip Kode -->
+                    <div class="form-group">
+                      <label for="zipkode">Kode Pos</label>
+                      <input type="text" class="form-control" id="zipkode" name="zipkode">
+                    </div>
+                    <!-- Kecamatan -->
+                    <div class="form-group">
+                      <label for="kecamatan">Kecamatan</label>
+                      <input type="text" class="form-control" id="kecamatan" name="kecamatan">
+                    </div>
+                    <!-- Alamat -->
+                    <div class="form-group">
+                      <label for="alamat">Alamat Lokasi</label>
+                      <textarea class="form-control" id="alamat" rows="3" name="alamat"></textarea>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <?php endif; ?>
         </div>
       </div>
       <!-- /.col-lg-3 -->
@@ -19,9 +82,18 @@
       <div class="col-lg-7 mt-md-0 mt-3">
         <div class="card p-5">
             <h3>Riwayat Pembelian</h3>
+            <?php if($pending->num_rows() !== 0) : ?>
+              <a href="#" style="text-decoration:none; color:black;">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <?= str_replace("%20"," ",$key['nama_barang']) ?>
+                  <a class="badge badge-danger badge-pill" href="<?= base_url('user/deletewishlist/'.$key['id']) ?>">Delete</a>
+                </li>
+              </a>
+            <?php else : ?>
             <div class="alert alert-danger mt-3">
                 belum ada riwayat pembelian
             </div>
+            <?php endif; ?>
         </div>
       </div>
       <!-- /.col-lg-9 -->

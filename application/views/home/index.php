@@ -53,8 +53,6 @@
                 </h4>
                 <!-- Heading -->
                 <h5 class="mt-2">Rp.<?= number_format($key['harga_barang'],0); ?></h5>
-                <small><?= $key['nama_toko'] ?></small>
-                <br>
                 <!-- RAting -->
                 <small class="text-warning">  
                 <?php for ($i=0; $i < 5; $i++) : ?>
