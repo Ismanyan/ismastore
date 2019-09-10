@@ -1,7 +1,7 @@
 <div class="container my-5">
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#add">
     Add New
     </button>
 
@@ -37,16 +37,16 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New</h5>
+        <h5 class="modal-title" id="addLabel">Add New</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="" method="post">
+      <form action="<?= base_url('user/addBarang') ?>" method="post" enctype="multipart/form-data">
         <div class="modal-body">
             <div class="input-group mb-2">
                 <label class="input-group-btn">
@@ -57,18 +57,26 @@
                 <input type="text" class="form-control input-lg" size="40" placeholder="Gambar barang..." readonly required>
               </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Nama Barang">
+                <input type="text" class="form-control" placeholder="Nama Barang" name="nama_barang" required>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Harga Barang">
+              <select name="kategori_barang" class="form-control" required>
+                <option disabled selected>-- Pilih Kategori --</option>
+                <?php foreach($kategori as $key) : ?>
+                <option value="<?= $key['id'] ?>"><?= $key['nama'] ?></option>
+                <?php endforeach; ?>
+              </select>
             </div>
             <div class="form-group">
-                <textarea class="form-control" rows="4" placeholder="Deskripsi Barang"></textarea>
+                <input type="text" class="form-control" placeholder="Harga Barang" name="harga_barang" required>
             </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="4" placeholder="Deskripsi Barang" name="desc_barang" required></textarea>
+            </div>  
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success">Save changes</button>
+            <button type="submit" class="btn btn-success">Add</button>
         </div>
       </form>
     </div>

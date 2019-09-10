@@ -7,7 +7,7 @@
         <div class="list-group">
           <div class="list-group-item mt-5"><h3>Kategori</h3></div>
           <?php foreach($kategori as $key) : ?>
-           <a href="<?= base_url('kategori/'.$key['nama']) ?>" class="list-group-item"><?= $key['nama'] ?></a>
+           <a href="<?= base_url('search/kategori/'.$key['id']) ?>" class="list-group-item"><?= $key['nama'] ?></a>
           <?php endforeach; ?>
         </div>
       </div>
@@ -53,8 +53,6 @@
                 </h4>
                 <!-- Heading -->
                 <h5 class="mt-2">Rp.<?= number_format($key['harga_barang'],0); ?></h5>
-                <small><?= $key['nama_toko'] ?></small>
-                <br>
                 <!-- RAting -->
                 <small class="text-warning">  
                 <?php for ($i=0; $i < 5; $i++) : ?>

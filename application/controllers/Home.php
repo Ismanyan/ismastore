@@ -21,23 +21,23 @@ class Home extends CI_Controller {
         $data['kategori'] = $this->home_models->getKategori();
         $data['barang'] = $this->home_models->getBarang();
         $data['title'] = "Home | Ismastore";
-        $this->load->view('layouts/header.php',$data);
-        $this->load->view('home/index.php',$data);
-        $this->load->view('layouts/footer.php');
+        $this->load->view('layouts/header',$data);
+        $this->load->view('home/index',$data);
+        $this->load->view('layouts/footer');
     }
     
     // Login Page
 	public function login()
 	{
         $data['title'] = "Login | Ismastore";
-        $this->load->view('auth/login.php',$data);
+        $this->load->view('auth/login',$data);
     }
     
     // Daftar Page
 	public function daftar()
 	{
         $data['title'] = "Daftar | Ismastore";
-        $this->load->view('auth/daftar.php',$data);
+        $this->load->view('auth/daftar',$data);
 	}
-	
+    
 }

@@ -17,12 +17,19 @@ class Views extends CI_Controller {
         { 
             $this->load->model('user_models');
             $data['user_info'] = $this->user_models->getUserInfo($this->session->userdata('id_user'));
+            $data['getProv'] = $this->user_models->getProv();
+            $data['getKota'] = $this->user_models->getKota();
+            $data['address'] = $this->user_models->getAddressUser($this->session->userdata('id_user'));
         }
 
         // Data for this page
         $data['title'] = "View | Ismastore";
         $data['kategori'] = $this->home_models->getKategori();
         $data['barang'] = $this->views_models->getDetail($id);
+        
+        // Address checking
+        $this->load->model('user_models');
+        $data['address'] = $this->user_models->getAddressUser($this->session->userdata('id_user'));
 
         // Load view page
         $this->load->view('layouts/header.php',$data);
